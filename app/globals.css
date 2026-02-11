@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 /* =========================
-   THEME VARIABLES (LIGHT ONLY)
+   THEME VARIABLES
 ========================= */
 :root {
   --background: #ffffff;
-  --foreground: #0f172a; /* slate-900 */
+  --foreground: #0f172a;
+
+  --primary: #932223;
+  --primary-dark: #7a1b1c;
+  --secondary: #2b2b2b;
+
+  --font-main: var(--font-cata);
 }
 
 /* =========================
@@ -18,26 +24,67 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
-  line-height: 1.6;
+  font-family: var(--font-main);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* =========================
-   RESET / NORMALIZE
-========================= */
 * {
   box-sizing: border-box;
 }
 
+/* =========================
+   TYPOGRAPHY SYSTEM
+========================= */
+
+/* Headings */
+h1 {
+  @apply text-4xl md:text-5xl font-extrabold tracking-tight;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl font-bold tracking-tight;
+}
+
+h3 {
+  @apply text-2xl font-semibold;
+}
+
+h4,
+h5,
+h6 {
+  @apply font-semibold;
+}
+
+/* Body Text */
+p {
+  @apply text-base font-medium text-black;
+}
+
+/* Links */
 a {
   @apply transition-colors duration-200;
 }
 
+/* =========================
+   FORM SYSTEM
+========================= */
+
 input,
 select,
-textarea,
+textarea {
+  @apply border border-gray-300 rounded-lg px-4 py-3 outline-none transition;
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(147, 34, 35, 0.15);
+}
+
 button {
   font-family: inherit;
 }
@@ -45,28 +92,62 @@ button {
 /* =========================
    LAYOUT UTILITIES
 ========================= */
+
 .container {
   @apply max-w-7xl mx-auto px-4;
 }
 
-/* =========================
-   COMMON UI HELPERS
-========================= */
 .section {
-  @apply py-16 md:py-20;
+  @apply py-20;
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-bold text-center mb-10;
+  @apply text-3xl md:text-4xl font-bold text-center mb-12;
 }
 
 /* =========================
-   BUTTONS
+   BUTTON SYSTEM
 ========================= */
+
 .btn-primary {
-  @apply bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition;
+  background-color: var(--primary);
+  color: white;
+  @apply px-6 py-3 rounded-lg font-semibold transition duration-300;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
 }
 
 .btn-outline {
-  @apply border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-6 py-3 rounded-lg font-semibold transition;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  @apply px-6 py-3 rounded-lg font-semibold transition duration-300;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* =========================
+   CARD STYLE (Reusable)
+========================= */
+
+.card {
+  @apply bg-white rounded-2xl shadow-sm hover:shadow-lg transition;
+}
+
+/* =========================
+   SMOOTH UI POLISH
+========================= */
+
+img {
+  @apply object-cover;
+}
+
+::selection {
+  background: var(--primary);
+  color: white;
 }

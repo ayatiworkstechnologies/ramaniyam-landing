@@ -3,7 +3,15 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    const { name, email, phone, location, message } = await req.json();
+    const {
+      name,
+      email,
+      phone,
+      location,
+      project,
+      message,
+      lead_type,
+    } = await req.json();
 
     if (!name || !phone) {
       return NextResponse.json(
@@ -13,8 +21,9 @@ export async function POST(req) {
     }
 
     const query = `
-      INSERT INTO leads (name, email, phone, location, message)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO leads 
+      (name, email, phone, location, project, message, lead_type)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
     await pool.execute(query, [
@@ -22,15 +31,19 @@ export async function POST(req) {
       email,
       phone,
       location,
+      project,
       message,
+      lead_type || "general",
     ]);
 
     return NextResponse.json({
       success: true,
       message: "Lead submitted successfully",
     });
+
   } catch (error) {
-    console.error(error);
+    console.error("Lead API Error:", error);
+
     return NextResponse.json(
       { message: "Server error" },
       { status: 500 }

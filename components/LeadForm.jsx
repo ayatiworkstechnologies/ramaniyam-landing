@@ -2,36 +2,63 @@ import LeadFormComponent from "./Form";
 
 export default function LeadSection() {
   return (
-    <section
-      id="lead"
-      className="py-20 bg-gradient-to-r from-gray-900 to-gray-800"
-    >
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <section id="lead" className="section bg-gray-50">
+      <div className="container">
 
-        {/* LEFT CONTENT */}
-        <div className="text-white">
-          <span className="inline-block text-orange-400 font-semibold uppercase tracking-wider text-sm mb-3">
-            Enquire Now
-          </span>
+        <div className=" p-10 lg:p-16 grid lg:grid-cols-2 gap-16 items-center">
 
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-            Get Price Details & Brochure
-          </h2>
+          {/* LEFT CONTENT */}
+          <div className="relative">
 
-          <p className="text-gray-300 mb-6 max-w-lg">
-            Share your details and our property expert will contact you
-            with complete pricing, floor plans, and site visit options.
-          </p>
+            {/* Accent Line */}
+            <div
+              className="absolute left-0 top-0 h-full w-1 rounded-full"
+              style={{ backgroundColor: "var(--primary)" }}
+            />
 
-          <ul className="space-y-3 text-gray-300 text-sm">
-            <li>✔ Instant callback</li>
-            <li>✔ Official price details</li>
-            <li>✔ No spam, 100% privacy</li>
-          </ul>
+            <div className="pl-6">
+              <span
+                className="inline-block font-semibold uppercase tracking-widest text-sm mb-4"
+                style={{ color: "var(--primary)" }}
+              >
+                Enquire Now
+              </span>
+
+              <h2 className="mb-6 leading-tight text-gray-900">
+                Get Price Details & Brochure
+              </h2>
+
+              <p className="text-gray-600 mb-10 max-w-xl font-medium">
+                Share your details and our property expert will connect with you
+                to provide official pricing, floor plans, and site visit
+                assistance for your preferred project.
+              </p>
+
+              {/* BENEFITS */}
+              <div className="grid sm:grid-cols-3 gap-6 text-sm">
+                {[
+                  "Instant Callback",
+                  "Official Pricing",
+                  "100% Privacy Assured",
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-gray-100 px-5 py-4 rounded-xl font-medium text-gray-700"
+                  >
+                    ✓ {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT FORM */}
+          <div className="bg-white rounded-3xl shadow-2xl">
+            <LeadFormComponent />
+          </div>
+
         </div>
 
-        {/* RIGHT FORM */}
-        <LeadFormComponent />
       </div>
     </section>
   );

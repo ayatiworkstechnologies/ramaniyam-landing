@@ -1,48 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import { getUniqueLocations } from "@/utils/getLocations";
+import { useForm } from "react-hook-form";
+import projects from "@/data/projects";
 
 export default function LeadFormComponent() {
-  const locations = getUniqueLocations();
-
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    location: "",
-    message: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     setLoading(true);
     setStatus(null);
 
     try {
-      const res = await fetch("/api/lead", {
+      const res = await fetch("/api/lead.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(data),
       });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
+      if (!res.ok) throw new Error();
 
       setStatus("success");
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        location: "",
-        message: "",
-      });
+      reset();
     } catch {
       setStatus("error");
     } finally {
@@ -50,93 +38,140 @@ export default function LeadFormComponent() {
     }
   };
 
+  const handleProjectChange = (e) => {
+    const value = e.target.value;
+
+    const selected = projects.find(
+      (p) => `${p.location} - ${p.name}` === value
+    );
+
+    setValue("project", selected?.name || "");
+    setValue("location", selected?.location || "");
+  };
+
   return (
-    <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-10">
-      <h3 className="text-2xl font-bold mb-1 text-center">
+    <div className="bg-white rounded-3xl shadow-2xl p-10">
+      <h3 className="text-2xl font-bold text-center mb-6">
         Request a Call Back
       </h3>
-      <p className="text-sm text-gray-500 mb-6 text-center">
-        Fill the form & we’ll reach you shortly
-      </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Full Name"
-          required
-          className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none"
-        />
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
 
-        <input
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          type="email"
-          placeholder="Email Address"
-          className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none"
-        />
+        {/* NAME */}
+        <div>
+          <input
+            {...register("name", { required: "Full name is required" })}
+            placeholder="Full Name"
+            className="w-full border rounded-xl px-4 py-3"
+          />
+          {errors.name && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.name.message}
+            </p>
+          )}
+        </div>
 
-        <input
-          name="phone"
-          value={form.phone}
-          onChange={handleChange}
-          type="tel"
-          placeholder="Mobile Number"
-          required
-          className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none"
-        />
+        {/* EMAIL */}
+        <div>
+          <input
+            type="email"
+            {...register("email", {
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Invalid email address",
+              },
+            })}
+            placeholder="Email Address"
+            className="w-full border rounded-xl px-4 py-3"
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.email.message}
+            </p>
+          )}
+        </div>
 
-        {/* 🔥 Dynamic Locations */}
-        <select
-          name="location"
-          value={form.location}
-          onChange={handleChange}
-          required
-          className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none"
-        >
-          <option value="">Interested Location</option>
-          {locations.map((loc, i) => (
-            <option key={i} value={loc}>
-              {loc}
-            </option>
-          ))}
-        </select>
+        {/* PHONE */}
+        <div>
+          <input
+            {...register("phone", {
+              required: "Mobile number is required",
+              minLength: {
+                value: 10,
+                message: "Enter valid mobile number",
+              },
+            })}
+            placeholder="Mobile Number"
+            className="w-full border rounded-xl px-4 py-3"
+          />
+          {errors.phone && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.phone.message}
+            </p>
+          )}
+        </div>
 
+        {/* SINGLE PROJECT + LOCATION DROPDOWN */}
+        <div>
+          <select
+            {...register("projectSelect", {
+              required: "Please select a project",
+            })}
+            onChange={handleProjectChange}
+            className="w-full border rounded-xl px-4 py-3"
+          >
+            <option value="">Select Project Locations</option>
+            {projects.map((proj, i) => (
+              <option
+                key={i}
+                value={`${proj.location} - ${proj.name}`}
+              >
+                {proj.location} - {proj.name}
+              </option>
+            ))}
+          </select>
+          {errors.projectSelect && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.projectSelect.message}
+            </p>
+          )}
+        </div>
+
+        {/* Hidden Fields Sent to API */}
+        <input type="hidden" {...register("project")} />
+        <input type="hidden" {...register("location")} />
+
+        {/* MESSAGE */}
         <textarea
-          name="message"
-          value={form.message}
-          onChange={handleChange}
+          {...register("message")}
           rows="3"
           placeholder="Message (Optional)"
-          className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none"
+          className="w-full border rounded-xl px-4 py-3"
         />
 
+        {/* STATUS */}
         {status === "success" && (
-          <p className="text-green-600 text-sm">
-            ✅ Thank you! Our team will contact you shortly.
+          <p className="text-green-600 text-sm text-center">
+            ✅ Thank you! We will contact you shortly.
           </p>
         )}
 
         {status === "error" && (
-          <p className="text-red-600 text-sm">
-            ❌ Something went wrong. Please try again.
+          <p className="text-red-600 text-sm text-center">
+            ❌ Something went wrong.
           </p>
         )}
 
+        {/* SUBMIT */}
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-60 text-white py-3 rounded-xl font-semibold text-lg transition"
+          className="w-full py-3 rounded-xl text-white font-semibold"
+          style={{ backgroundColor: "var(--primary)" }}
         >
           {loading ? "Submitting..." : "Get Details Now"}
         </button>
       </form>
-
-      <p className="text-xs text-gray-500 mt-4 text-center">
-        🔒 We respect your privacy. No spam calls.
-      </p>
     </div>
   );
 }

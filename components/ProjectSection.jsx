@@ -5,26 +5,32 @@ export default function ProjectSection() {
   return (
     <section
       id="projects"
-      className="py-20 bg-gradient-to-b from-white to-gray-50"
+      className="section bg-white"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="container">
 
         {/* SECTION HEADER */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="inline-block text-orange-500 font-semibold uppercase tracking-wider text-sm mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span
+            className="inline-block font-semibold uppercase tracking-widest text-sm mb-4"
+            style={{ color: "var(--primary)" }}
+          >
             Our Portfolio
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+
+          <h2 className="mb-6">
             Explore Our Premium Projects
           </h2>
-          <p className="text-gray-600">
+
+          <p className="text-gray-600 font-medium">
             Choose from ready-to-move and upcoming residential projects
-            in Chennai’s most desirable locations.
+            in Chennai’s most desirable locations, thoughtfully designed
+            for modern living.
           </p>
         </div>
 
         {/* PROJECT GRID */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, i) => (
             <ProjectCard key={i} project={project} />
           ))}

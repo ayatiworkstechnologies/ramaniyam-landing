@@ -18,7 +18,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 30);
 
       navLinks.forEach((link) => {
         const section = document.getElementById(link.id);
@@ -39,21 +39,21 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur shadow-md py-2"
-          : "bg-white/90 backdrop-blur py-4"
+          ? "bg-white shadow-md py-2"
+          : "bg-white/95 backdrop-blur py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="container flex items-center justify-between">
 
         {/* LOGO */}
-        <Link href="#home" className="flex items-center gap-2">
+        <Link href="#home" className="flex items-center">
           <Image
-            src="/logo.svg"   // place logo in public/images
+            src="/logo.svg"
             alt="Ramaniyam Logo"
-            width={180}
-            height={80}
+            width={170}
+            height={60}
             priority
-            className="h-16 w-auto"
+            className="h-14 w-auto"
           />
         </Link>
 
@@ -63,20 +63,23 @@ export default function Header() {
             <Link
               key={link.id}
               href={link.href}
-              className={`font-medium transition ${
+              className={`relative font-medium transition ${
                 active === link.id
-                  ? "text-orange-500"
-                  : "text-gray-700 hover:text-orange-500"
+                  ? "text-[var(--primary)]"
+                  : "text-gray-700 hover:text-[var(--primary)]"
               }`}
             >
               {link.name}
+
+              {/* Active underline */}
+              {active === link.id && (
+                <span className="absolute -bottom-1 left-0 w-full "></span>
+              )}
             </Link>
           ))}
 
-          <Link
-            href="#lead"
-            className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-semibold transition"
-          >
+          {/* CTA BUTTON */}
+          <Link href="#lead" className="btn-primary">
             Enquire Now
           </Link>
         </nav>
@@ -84,7 +87,7 @@ export default function Header() {
         {/* MOBILE TOGGLE */}
         <button
           aria-label="Toggle Menu"
-          className="md:hidden"
+          className="md:hidden text-[var(--primary)]"
           onClick={() => setOpen(!open)}
         >
           <svg
@@ -112,32 +115,36 @@ export default function Header() {
       </div>
 
       {/* MOBILE MENU */}
-      {open && (
-        <div className="md:hidden bg-white border-t">
-          {navLinks.map((link) => (
-            <Link
-              key={link.id}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className={`block px-6 py-4 border-b transition ${
-                active === link.id
-                  ? "text-orange-500 font-semibold"
-                  : "text-gray-700 hover:bg-gray-50"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
+      <div
+        className={`md:hidden bg-white border-t transition-all duration-300 ${
+          open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        {navLinks.map((link) => (
+          <Link
+            key={link.id}
+            href={link.href}
+            onClick={() => setOpen(false)}
+            className={`block px-6 py-4 border-b transition ${
+              active === link.id
+                ? "text-[var(--primary)] font-semibold"
+                : "text-gray-700 hover:bg-gray-50"
+            }`}
+          >
+            {link.name}
+          </Link>
+        ))}
 
+        <div className="p-6">
           <Link
             href="#lead"
             onClick={() => setOpen(false)}
-            className="block text-center bg-orange-500 text-white py-4 font-semibold"
+            className="btn-primary w-full block text-center"
           >
             Enquire Now
           </Link>
         </div>
-      )}
+      </div>
     </header>
   );
 }

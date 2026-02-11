@@ -1,25 +1,56 @@
 import Link from "next/link";
-import { FiMapPin, FiPhone, FiMail, FiArrowUpRight } from "react-icons/fi";
+import {
+  FiMapPin,
+  FiPhone,
+  FiMail,
+  FiArrowUpRight,
+  FiFacebook,
+  FiInstagram,
+  FiYoutube,
+  FiChevronUp,
+} from "react-icons/fi";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-3 gap-10">
+    <footer
+      className="text-white relative"
+      style={{ backgroundColor: "var(--primary)" }}
+    >
+
+      {/* MAIN FOOTER */}
+      <div className="container py-20 grid md:grid-cols-4 gap-14">
+
         {/* BRAND */}
         <div>
-          <h3 className="text-xl font-bold text-white mb-3">
+          <h3 className="text-2xl font-bold mb-5">
             Ramaniyam Real Estates
           </h3>
-          <p className="text-sm text-gray-400 leading-relaxed">
+
+          <div className="text-sm text-white/80 leading-relaxed mb-6">
             A trusted name in premium residential developments across Chennai
-            for over three decades. Built with quality, integrity, and timeless
-            design.
-          </p>
+            for over three decades. Built with quality, integrity and timeless design.
+          </div>
+
+          {/* SOCIAL */}
+          <div className="flex gap-4">
+            {[FiFacebook, FiInstagram, FiYoutube].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white hover:text-black transition"
+              >
+                <Icon size={17} />
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* QUICK LINKS */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+          <h4 className="font-semibold mb-6 text-lg">
+            Quick Links
+          </h4>
+
           <ul className="space-y-3 text-sm">
             {[
               { name: "Home", href: "#home" },
@@ -30,10 +61,10 @@ export default function Footer() {
               <li key={i}>
                 <Link
                   href={link.href}
-                  className="inline-flex items-center gap-2 hover:text-white transition"
+                  className="flex items-center gap-2 text-white/80 hover:text-white transition"
                 >
+                  <FiArrowUpRight className="opacity-60" />
                   {link.name}
-                  <FiArrowUpRight className="text-sm opacity-60" />
                 </Link>
               </li>
             ))}
@@ -41,43 +72,78 @@ export default function Footer() {
         </div>
 
         {/* CONTACT */}
-        <div>
-          <h4 className="text-white font-semibold mb-4">Contact</h4>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-start gap-2">
-              <FiMapPin className="mt-0.5 text-orange-500" />
-              Ramaniyam Real Estates, 14/67, 3rd Main Rd, Gandhi Nagar, Adyar,
-              Chennai 600 020
+        <div className="md:col-span-2">
+          <h4 className="font-semibold mb-6 text-lg">
+            Contact Us
+          </h4>
+
+          <ul className="space-y-5 text-sm">
+
+            <li className="flex items-start gap-3">
+              <FiMapPin className="mt-1 text-white" />
+              <span className="text-white/80">
+                Ramaniyam Real Estates <br />
+                14/67, 3rd Main Rd, Gandhi Nagar, Adyar,
+                Chennai – 600020
+              </span>
             </li>
 
-            <li className="flex items-center gap-2">
-              <FiPhone className="text-orange-500" />
-              <a
-                href="tel:+919999999999"
-                className="hover:text-white transition"
-              >
-                +91 4443447500 +91 9710928855 +91 7299922617
-              </a>
+            <li className="flex items-start gap-3">
+              <FiPhone className="mt-1 text-white" />
+              <div className="flex flex-col">
+                <a href="tel:+914443447500" className="hover:underline">
+                  +91 44 4344 7500
+                </a>
+                <a href="tel:+919710928855" className="hover:underline">
+                  +91 97109 28855
+                </a>
+                <a href="tel:+917299922617" className="hover:underline">
+                  +91 72999 22617
+                </a>
+              </div>
             </li>
 
-            <li className="flex items-center gap-2">
-              <FiMail className="text-orange-500" />
+            <li className="flex items-center gap-3">
+              <FiMail className="text-white" />
               <a
                 href="mailto:sales@ramaniyam.com"
-                className="hover:text-white transition"
+                className="hover:underline"
               >
                 sales@ramaniyam.com
               </a>
             </li>
+
           </ul>
         </div>
       </div>
 
-      {/* BOTTOM BAR */}
-      <div className="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Ramaniyam Real Estates. All rights
-        reserved.
+      {/* DIVIDER */}
+      <div className="border-t border-white/20" />
+
+      {/* BOTTOM BAR (Darker Red Shade) */}
+      <div
+        className="py-6 text-sm"
+        style={{ backgroundColor: "var(--primary)" }}
+      >
+        <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-white/80">
+          <span>
+            © {new Date().getFullYear()} Ramaniyam Real Estates. All rights reserved.
+          </span>
+
+          <span className="text-xs tracking-wide uppercase">
+            RERA Approved Projects • Premium Living
+          </span>
+        </div>
       </div>
+
+      {/* BACK TO TOP */}
+      <a
+        href="#home"
+        className="fixed right-6 bottom-6 w-12 h-12 rounded-full flex items-center justify-center shadow-xl bg-white text-black transition hover:scale-110"
+      >
+        <FiChevronUp size={20} />
+      </a>
+
     </footer>
   );
 }
