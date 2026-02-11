@@ -11,61 +11,65 @@ export default function ProjectCard({ project }) {
 
   return (
     <>
-      <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-gray-200 ">
+      <div className="relative group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 h-[420px] bg-white">
 
         {/* IMAGE */}
-        <div className="relative h-56 overflow-hidden">
-          <Image
-            src={project.image}
-            alt={project.name}
-            fill
-            className="object-cover group-hover:scale-105 transition duration-500"
-          />
+        <Image
+          src={project.image}
+          alt={project.name}
+          fill
+          className="object-cover group-hover:scale-105 transition duration-700"
+        />
 
-          {/* LOCATION BADGE */}
-          <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full flex items-center gap-2 text-sm font-medium shadow">
-            <MapPin
-              className="w-4 h-4"
-              style={{ color: "var(--primary)" }}
-            />
-            {project.location}
-          </div>
+        {/* SOFT WHITE GRADIENT (BRIGHT) */}
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent"></div> */}
+
+        {/* LOCATION BADGE */}
+        <div className="absolute top-5 left-5 bg-white/80 backdrop-blur-md text-[var(--primary)] px-4 py-1.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-sm">
+          <MapPin className="w-4 h-4" />
+          {project.location}
         </div>
 
-        {/* CONTENT */}
-        <div className="p-6">
-          <h3 className="text-xl font-bold mb-1">
-            {project.name}
-          </h3>
+        {/* BOTTOM CONTENT */}
+        <div className="absolute bottom-0 left-0 w-full p-6">
 
-          <p className="text-gray-600 text-sm mb-3">
-            {project.type || "Premium Residential Project"}
-          </p>
+          <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-5 shadow-md">
 
-          <p className="text-lg font-semibold mb-5">
-            {project.price}
-          </p>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">
+              {project.name}
+            </h3>
 
-          {/* ACTIONS */}
-          <div className="flex gap-3">
+            <div className="flex gap-3">
 
-            {/* BROCHURE BUTTON (OPEN MODAL) */}
-            <button
-              onClick={() => setOpen(true)}
-              className="flex-1 btn-outline inline-flex items-center justify-center gap-2"
-            >
-              <FileText className="w-4 h-4" />
-              Brochure
-            </button>
+              {/* BROCHURE BUTTON */}
+              <button
+                onClick={() => setOpen(true)}
+                className="flex-1 flex items-center justify-center gap-2 
+                           border border-[var(--primary)] 
+                           text-[var(--primary)] 
+                           py-2.5 rounded-xl font-semibold 
+                           transition-all duration-300
+                           hover:bg-[var(--primary)] 
+                           hover:text-white
+                           hover:shadow-md"
+              >
+                <FileText className="w-4 h-4" />
+                Brochure
+              </button>
 
-            {/* ENQUIRE BUTTON */}
-            <Link
-              href="#lead"
-              className="flex-1 btn-primary inline-flex items-center justify-center gap-2"
-            >
-              <Phone className="w-4 h-4" />
-              Enquire
-            </Link>
+              {/* ENQUIRE BUTTON */}
+              <Link
+                href="#lead"
+                className="flex-1 flex items-center justify-center gap-2 
+                           py-2.5 rounded-xl font-semibold text-white
+                           transition-all duration-300 hover:shadow-md"
+                style={{ backgroundColor: "var(--primary)" }}
+              >
+                <Phone className="w-4 h-4" />
+                Enquire
+              </Link>
+
+            </div>
           </div>
         </div>
       </div>

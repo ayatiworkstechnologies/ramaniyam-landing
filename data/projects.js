@@ -75,7 +75,7 @@ const projects = [
     name: "Balaji",
     location: "Ashok Nagar",
     price: "Price on Request",
-    image: "/project/balaji.jpg",
+    image: "/project/Balaji.jpg",
     // brochure: "/brochures/balaji.pdf",
     type: "Modern Residential Living",
   },
