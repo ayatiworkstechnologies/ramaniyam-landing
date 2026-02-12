@@ -1,7 +1,11 @@
+import dynamic from "next/dynamic";
+
 import { Catamaran } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+const Footer = dynamic(() => import("@/components/Footer"));
 
+import Header from "@/components/Header";
 const catamaran = Catamaran({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -31,7 +35,9 @@ export default function RootLayout({ children }) {
             gtag('config', 'AW-17942239966');
           `}
         </Script>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
