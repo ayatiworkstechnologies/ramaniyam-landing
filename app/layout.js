@@ -19,7 +19,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={catamaran.variable}>
       <body>
-        {children}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17942239966"
           strategy="afterInteractive"
@@ -32,6 +31,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'AW-17942239966');
           `}
         </Script>
+        {children}
       </body>
     </html>
   );

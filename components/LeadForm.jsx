@@ -2,7 +2,7 @@ import LeadFormComponent from "./Form";
 
 export default function LeadSection() {
   return (
-    <section className="section bg-gray-50">
+    <section  id="lead" className="section bg-gray-50">
       <div className="container">
         <div className=" p-10 lg:p-16 grid lg:grid-cols-2 gap-16 items-center">
           {/* LEFT CONTENT */}

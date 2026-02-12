@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           {/* SOCIAL */}
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             {[Facebook, Instagram, Youtube].map((Icon, i) => (
               <a
                 key={i}
@@ -39,7 +39,7 @@ export default function Footer() {
                 <Icon size={17} />
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* QUICK LINKS */}
