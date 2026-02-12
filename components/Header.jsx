@@ -13,7 +13,7 @@ export default function Header() {
     { name: "Home", href: "#home", id: "home" },
     { name: "Projects", href: "#projects", id: "projects" },
     { name: "Amenities", href: "#amenities", id: "amenities" },
-    { name: "Contact", href: "#lead", id: "lead" },
+    // { name: "Contact", href: "#lead", id: "lead" },
   ];
 
   useEffect(() => {
@@ -38,13 +38,10 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white shadow-md py-2"
-          : "bg-white/95 backdrop-blur py-4"
+        scrolled ? "bg-white shadow-md py-2" : "bg-white/95 backdrop-blur py-4"
       }`}
     >
       <div className="container flex items-center justify-between">
-
         {/* LOGO */}
         <Link href="#home" className="flex items-center">
           <Image
@@ -117,7 +114,9 @@ export default function Header() {
       {/* MOBILE MENU */}
       <div
         className={`md:hidden bg-white border-t transition-all duration-300 ${
-          open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          open
+            ? "max-h-[500px] opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
         {navLinks.map((link) => (

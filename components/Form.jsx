@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
-  FiUser,
-  FiMail,
-  FiPhone,
-  FiSend,
-  FiCheckCircle,
-  FiAlertCircle,
-} from "react-icons/fi";
+  User,
+  Mail,
+  Phone,
+  Send,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 import projects from "@/data/projects";
 
 export default function LeadFormComponent() {
@@ -32,11 +32,14 @@ export default function LeadFormComponent() {
     setStatus(null);
 
     try {
-      const res = await fetch("https://campaign-ramaniyam.ayatiworks.com/api/lead.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        "https://campaign-ramaniyam.ayatiworks.com/api/lead.php",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
 
       const result = await res.json();
 
@@ -51,7 +54,6 @@ export default function LeadFormComponent() {
       setTimeout(() => {
         window.location.href = "/thank-you?type=general";
       }, 1200);
-
     } catch (err) {
       setStatus("error");
     } finally {
@@ -66,7 +68,7 @@ export default function LeadFormComponent() {
     const value = e.target.value;
 
     const selected = projects.find(
-      (p) => `${p.location} - ${p.name}` === value
+      (p) => `${p.location} - ${p.name}` === value,
     );
 
     setValue("project", selected?.name || "");
@@ -75,13 +77,11 @@ export default function LeadFormComponent() {
 
   return (
     <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 w-full max-w-lg mx-auto transition-all duration-300">
-
       <h3 className="text-2xl font-bold text-center mb-8">
         Request a Call Back
       </h3>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-
         {/* NAME */}
         <div>
           <div className="relative">
@@ -94,7 +94,7 @@ export default function LeadFormComponent() {
           </div>
           {errors.name && (
             <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-              <FiAlertCircle size={14} />
+              <AlertCircle size={14} />
               {errors.name.message}
             </p>
           )}
@@ -119,7 +119,7 @@ export default function LeadFormComponent() {
           </div>
           {errors.email && (
             <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-              <FiAlertCircle size={14} />
+              <AlertCircle size={14} />
               {errors.email.message}
             </p>
           )}
@@ -143,7 +143,7 @@ export default function LeadFormComponent() {
           </div>
           {errors.phone && (
             <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-              <FiAlertCircle size={14} />
+              <AlertCircle size={14} />
               {errors.phone.message}
             </p>
           )}
@@ -168,7 +168,7 @@ export default function LeadFormComponent() {
 
           {errors.projectSelect && (
             <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-              <FiAlertCircle size={14} />
+              <AlertCircle size={14} />
               {errors.projectSelect.message}
             </p>
           )}
@@ -190,14 +190,14 @@ export default function LeadFormComponent() {
         {/* STATUS */}
         {status === "success" && (
           <div className="flex items-center gap-2 bg-green-50 text-green-700 px-4 py-3 rounded-xl border border-green-200 animate-pulse">
-            <FiCheckCircle />
+            <CheckCircle />
             Redirecting to confirmation page...
           </div>
         )}
 
         {status === "error" && (
           <div className="flex items-center gap-2 bg-red-50 text-red-600 px-4 py-3 rounded-xl border border-red-200">
-            <FiAlertCircle />
+            <AlertCircle />
             Submission failed. Please try again.
           </div>
         )}
@@ -216,12 +216,11 @@ export default function LeadFormComponent() {
             </span>
           ) : (
             <>
-              <FiSend />
+              <Send />
               Get Details Now
             </>
           )}
         </button>
-
       </form>
     </div>
   );

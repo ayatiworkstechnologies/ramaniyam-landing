@@ -1,11 +1,13 @@
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
-import ProjectSection from "@/components/ProjectSection";
-import Amenities from "@/components/Amenities";
-import Testimonials from "@/components/Testimonials";
-import LeadForm from "@/components/LeadForm";
-import Footer from "@/components/Footer";
+
+const ProjectSection = dynamic(() => import("@/components/ProjectSection"));
+const Amenities = dynamic(() => import("@/components/Amenities"));
+// const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const LeadForm = dynamic(() => import("@/components/LeadForm"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (

@@ -12,12 +12,12 @@ export default function ProjectCard({ project }) {
   return (
     <>
       <div className="relative group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 h-[420px] bg-white">
-
         {/* IMAGE */}
         <Image
           src={project.image}
           alt={project.name}
           fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition duration-700"
         />
 
@@ -32,15 +32,12 @@ export default function ProjectCard({ project }) {
 
         {/* BOTTOM CONTENT */}
         <div className="absolute bottom-0 left-0 w-full p-6">
-
           <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-5 shadow-md">
-
             <h3 className="text-xl font-bold text-gray-900 mb-4">
               {project.name}
             </h3>
 
             <div className="flex gap-3">
-
               {/* BROCHURE BUTTON */}
               <button
                 onClick={() => setOpen(true)}
@@ -68,7 +65,6 @@ export default function ProjectCard({ project }) {
                 <Phone className="w-4 h-4" />
                 Enquire
               </Link>
-
             </div>
           </div>
         </div>
@@ -76,10 +72,7 @@ export default function ProjectCard({ project }) {
 
       {/* MODAL */}
       {open && (
-        <BrochureModal
-          project={project}
-          onClose={() => setOpen(false)}
-        />
+        <BrochureModal project={project} onClose={() => setOpen(false)} />
       )}
     </>
   );

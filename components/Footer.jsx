@@ -1,14 +1,14 @@
 import Link from "next/link";
 import {
-  FiMapPin,
-  FiPhone,
-  FiMail,
-  FiArrowUpRight,
-  FiFacebook,
-  FiInstagram,
-  FiYoutube,
-  FiChevronUp,
-} from "react-icons/fi";
+  MapPin,
+  Phone,
+  Mail,
+  ArrowUpRight,
+  Facebook,
+  Instagram,
+  Youtube,
+  ChevronUp,
+} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -16,24 +16,21 @@ export default function Footer() {
       className="text-white relative"
       style={{ backgroundColor: "var(--primary)" }}
     >
-
       {/* MAIN FOOTER */}
       <div className="container py-20 grid md:grid-cols-4 gap-14">
-
         {/* BRAND */}
         <div>
-          <h3 className="text-2xl font-bold mb-5">
-            Ramaniyam Real Estates
-          </h3>
+          <h3 className="text-2xl font-bold mb-5">Ramaniyam Real Estates</h3>
 
           <div className="text-sm text-white/80 leading-relaxed mb-6">
             A trusted name in premium residential developments across Chennai
-            for over three decades. Built with quality, integrity and timeless design.
+            for over three decades. Built with quality, integrity and timeless
+            design.
           </div>
 
           {/* SOCIAL */}
           <div className="flex gap-4">
-            {[FiFacebook, FiInstagram, FiYoutube].map((Icon, i) => (
+            {[Facebook, Instagram, Youtube].map((Icon, i) => (
               <a
                 key={i}
                 href="#"
@@ -47,9 +44,7 @@ export default function Footer() {
 
         {/* QUICK LINKS */}
         <div>
-          <h4 className="font-semibold mb-6 text-lg">
-            Quick Links
-          </h4>
+          <h4 className="font-semibold mb-6 text-lg">Quick Links</h4>
 
           <ul className="space-y-3 text-sm">
             {[
@@ -63,7 +58,7 @@ export default function Footer() {
                   href={link.href}
                   className="flex items-center gap-2 text-white/80 hover:text-white transition"
                 >
-                  <FiArrowUpRight className="opacity-60" />
+                  <ArrowUpRight className="opacity-60" />
                   {link.name}
                 </Link>
               </li>
@@ -73,23 +68,19 @@ export default function Footer() {
 
         {/* CONTACT */}
         <div className="md:col-span-2">
-          <h4 className="font-semibold mb-6 text-lg">
-            Contact Us
-          </h4>
+          <h4 className="font-semibold mb-6 text-lg">Contact Us</h4>
 
           <ul className="space-y-5 text-sm">
-
             <li className="flex items-start gap-3">
-              <FiMapPin className="mt-1 text-white" />
+              <MapPin className="mt-1 text-white" />
               <span className="text-white/80">
                 Ramaniyam Real Estates <br />
-                14/67, 3rd Main Rd, Gandhi Nagar, Adyar,
-                Chennai – 600020
+                14/67, 3rd Main Rd, Gandhi Nagar, Adyar, Chennai – 600020
               </span>
             </li>
 
             <li className="flex items-start gap-3">
-              <FiPhone className="mt-1 text-white" />
+              <Phone className="mt-1 text-white" />
               <div className="flex flex-col">
                 <a href="tel:+914443447500" className="hover:underline">
                   +91 44 4344 7500
@@ -104,15 +95,11 @@ export default function Footer() {
             </li>
 
             <li className="flex items-center gap-3">
-              <FiMail className="text-white" />
-              <a
-                href="mailto:sales@ramaniyam.com"
-                className="hover:underline"
-              >
+              <Mail className="text-white" />
+              <a href="mailto:sales@ramaniyam.com" className="hover:underline">
                 sales@ramaniyam.com
               </a>
             </li>
-
           </ul>
         </div>
       </div>
@@ -127,7 +114,8 @@ export default function Footer() {
       >
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-white/80">
           <span>
-            © {new Date().getFullYear()} Ramaniyam Real Estates. All rights reserved.
+            © {new Date().getFullYear()} Ramaniyam Real Estates. All rights
+            reserved.
           </span>
 
           <span className="text-xs tracking-wide uppercase">
@@ -141,9 +129,8 @@ export default function Footer() {
         href="#home"
         className="fixed right-6 bottom-6 w-12 h-12 rounded-full flex items-center justify-center shadow-xl bg-white text-black transition hover:scale-110"
       >
-        <FiChevronUp size={20} />
+        <ChevronUp size={20} />
       </a>
-
     </footer>
   );
 }

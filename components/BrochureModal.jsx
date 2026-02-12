@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
-  FiUser,
-  FiMail,
-  FiPhone,
-  FiX,
-  FiDownload,
-  FiCheckCircle,
-  FiAlertCircle,
-} from "react-icons/fi";
+  User,
+  Mail,
+  Phone,
+  X,
+  Download,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 
 export default function BrochureModal({ project, onClose }) {
   const {
@@ -28,17 +28,20 @@ export default function BrochureModal({ project, onClose }) {
     setStatus(null);
 
     try {
-      const res = await fetch("https://campaign-ramaniyam.ayatiworks.com/api/lead.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          project: project.name,
-          location: project.location,
-          lead_type: "brochure",
-          message: `Brochure requested for ${project.name}`,
-        }),
-      });
+      const res = await fetch(
+        "https://campaign-ramaniyam.ayatiworks.com/api/lead.php",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...data,
+            project: project.name,
+            location: project.location,
+            lead_type: "brochure",
+            message: `Brochure requested for ${project.name}`,
+          }),
+        },
+      );
 
       const result = await res.json();
 
@@ -52,10 +55,9 @@ export default function BrochureModal({ project, onClose }) {
       // Redirect to thank you page with brochure link
       setTimeout(() => {
         window.location.href = `/thank-you?type=brochure&file=${encodeURIComponent(
-          project.brochure
+          project.brochure,
         )}`;
       }, 1200);
-
     } catch (err) {
       setStatus("error");
     } finally {
@@ -65,15 +67,13 @@ export default function BrochureModal({ project, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 px-4 animate-fadeIn">
-
       <div className="bg-white rounded-3xl p-8 w-full max-w-md relative shadow-2xl">
-
         {/* CLOSE BUTTON */}
         <button
           onClick={onClose}
           className="absolute top-5 right-5 text-gray-400 hover:text-black transition"
         >
-          <FiX size={20} />
+          <X size={20} />
         </button>
 
         {/* TITLE */}
@@ -86,7 +86,6 @@ export default function BrochureModal({ project, onClose }) {
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-
           {/* NAME */}
           <div>
             <div className="relative">
@@ -99,7 +98,7 @@ export default function BrochureModal({ project, onClose }) {
             </div>
             {errors.name && (
               <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-                <FiAlertCircle size={14} />
+                <AlertCircle size={14} />
                 {errors.name.message}
               </p>
             )}
@@ -124,7 +123,7 @@ export default function BrochureModal({ project, onClose }) {
             </div>
             {errors.email && (
               <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-                <FiAlertCircle size={14} />
+                <AlertCircle size={14} />
                 {errors.email.message}
               </p>
             )}
@@ -148,7 +147,7 @@ export default function BrochureModal({ project, onClose }) {
             </div>
             {errors.phone && (
               <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-                <FiAlertCircle size={14} />
+                <AlertCircle size={14} />
                 {errors.phone.message}
               </p>
             )}
@@ -157,14 +156,14 @@ export default function BrochureModal({ project, onClose }) {
           {/* STATUS */}
           {status === "success" && (
             <div className="flex items-center gap-2 bg-green-50 text-green-700 px-4 py-3 rounded-xl border border-green-200 animate-pulse">
-              <FiCheckCircle />
+              <CheckCircle />
               Redirecting to download...
             </div>
           )}
 
           {status === "error" && (
             <div className="flex items-center gap-2 bg-red-50 text-red-600 px-4 py-3 rounded-xl border border-red-200">
-              <FiAlertCircle />
+              <AlertCircle />
               Something went wrong. Please try again.
             </div>
           )}
@@ -183,12 +182,11 @@ export default function BrochureModal({ project, onClose }) {
               </span>
             ) : (
               <>
-                <FiDownload />
+                <Download />
                 Download Now
               </>
             )}
           </button>
-
         </form>
       </div>
     </div>

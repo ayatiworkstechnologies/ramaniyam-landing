@@ -2,14 +2,11 @@ import LeadFormComponent from "./Form";
 
 export default function LeadSection() {
   return (
-    <section id="lead" className="section bg-gray-50">
+    <section className="section bg-gray-50">
       <div className="container">
-
         <div className=" p-10 lg:p-16 grid lg:grid-cols-2 gap-16 items-center">
-
           {/* LEFT CONTENT */}
           <div className="relative">
-
             {/* Accent Line */}
             <div
               className="absolute left-0 top-0 h-full w-1 rounded-full"
@@ -33,32 +30,14 @@ export default function LeadSection() {
                 to provide official pricing, floor plans, and site visit
                 assistance for your preferred project.
               </p>
-
-              {/* BENEFITS */}
-              <div className="grid sm:grid-cols-3 gap-6 text-sm">
-                {[
-                  "Instant Callback",
-                  "Official Pricing",
-                  "100% Privacy Assured",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="bg-gray-100 px-5 py-4 rounded-xl font-medium text-gray-700"
-                  >
-                    ✓ {item}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
           {/* RIGHT FORM */}
-          <div className="bg-white rounded-3xl shadow-2xl">
+          <div id="lead" className="">
             <LeadFormComponent />
           </div>
-
         </div>
-
       </div>
     </section>
   );

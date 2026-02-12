@@ -15,7 +15,7 @@ export default function Hero() {
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 6 }}
-        className="absolute inset-0"
+        className="absolute inset-0 bg-gray-900"
       >
         <Image
           src="/banner.jpg"
@@ -31,7 +31,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative container py-24 grid lg:grid-cols-2 gap-16 items-center">
-
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -53,28 +52,26 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/80 mb-12 max-w-xl">
-            Discover premium residential projects across Chennai’s
-            most sought-after locations. RERA approved.
-            Designed with integrity and timeless architecture.
+            Discover premium residential projects across Chennai’s most
+            sought-after locations. RERA approved. Designed with integrity and
+            timeless architecture.
           </p>
 
           {/* FEATURE HIGHLIGHTS */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              "35+ Years Legacy",
-              "Ready & Upcoming",
-              "2, 3 & 4 BHK",
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + i * 0.2 }}
-                className="bg-white/10 backdrop-blur-xl border border-white/10 px-5 py-4 rounded-xl text-sm font-medium"
-              >
-                ✓ {item}
-              </motion.div>
-            ))}
+            {["35+ Years Legacy", "Ready & Upcoming", "2, 3 & 4 BHK"].map(
+              (item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + i * 0.2 }}
+                  className="bg-white/10 backdrop-blur-xl border border-white/10 px-5 py-4 rounded-xl text-sm font-medium"
+                >
+                  ✓ {item}
+                </motion.div>
+              ),
+            )}
           </div>
         </motion.div>
 
@@ -87,7 +84,6 @@ export default function Hero() {
         >
           <LeadFormComponent />
         </motion.div>
-
       </div>
     </section>
   );
