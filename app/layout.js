@@ -22,6 +22,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={catamaran.variable}>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=AW-17942239966"
+      />
+      <Script id="google-ads-init">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17942239966');
+        `}
+      </Script>
       <Script id="gtm" strategy="afterInteractive">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

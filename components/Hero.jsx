@@ -27,10 +27,10 @@ export default function Hero() {
       </motion.div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-black/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
 
       {/* Content */}
-      <div className="relative container py-24 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative container py-24 grid lg:grid-cols-2 gap-16 items-center text-white">
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -51,11 +51,11 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/80 mb-12 max-w-xl">
+          <div className="text-lg md:text-xl text-white/80 mb-12 max-w-xl">
             Discover premium residential projects across Chennai’s most
             sought-after locations. RERA approved. Designed with integrity and
             timeless architecture.
-          </p>
+          </div>
 
           {/* FEATURE HIGHLIGHTS */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -66,7 +66,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.2 }}
-                  className="bg-white/10 backdrop-blur-xl border border-white/10 px-5 py-4 rounded-xl text-sm font-medium"
+                  className="bg-white/10 backdrop-blur-xl text-red-800 border border-white/10 px-5 py-4 rounded-xl text-sm font-medium"
                 >
                   ✓ {item}
                 </motion.div>
@@ -80,7 +80,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9 }}
-          className=""
+          className="text-red-800"
         >
           <LeadFormComponent />
         </motion.div>

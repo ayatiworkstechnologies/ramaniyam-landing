@@ -6,7 +6,7 @@ import { MapPin, FileText, Phone } from "lucide-react";
 import { useState } from "react";
 import BrochureModal from "./BrochureModal";
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, priority = false }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -17,13 +17,11 @@ export default function ProjectCard({ project }) {
           src={project.image}
           alt={project.name}
           fill
+          priority={priority}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          quality={80}
           className="object-cover group-hover:scale-105 transition duration-700"
         />
-
-        {/* SOFT WHITE GRADIENT (BRIGHT) */}
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent"></div> */}
-
         {/* LOCATION BADGE */}
         <div className="absolute top-5 left-5 bg-white/80 backdrop-blur-md text-[var(--primary)] px-4 py-1.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-sm">
           <MapPin className="w-4 h-4" />

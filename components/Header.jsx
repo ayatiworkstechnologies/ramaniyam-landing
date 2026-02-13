@@ -10,7 +10,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "#home", id: "home" },
+    { name: "Home", href: "/", id: "home" },
     { name: "Projects", href: "#projects", id: "projects" },
     { name: "Amenities", href: "#amenities", id: "amenities" },
     // { name: "Contact", href: "#lead", id: "lead" },
@@ -43,7 +43,7 @@ export default function Header() {
     >
       <div className="container flex items-center justify-between">
         {/* LOGO */}
-        <Link href="#home" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo.svg"
             alt="Ramaniyam Logo"
