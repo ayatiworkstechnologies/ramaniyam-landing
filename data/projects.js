@@ -23,12 +23,20 @@ const projects = [
     brochure: "/brochures/Prema Saraswathi Brochure.pdf",
     type: "Luxury Urban Living",
   },
-  {
-    name: "Springs",
-    location: "Adyar",
+  // {
+  //   name: "Springs",
+  //   location: "Adyar",
+  //   price: "₹2.8 Cr onwards",
+  //   image: "/project/Springs.jpg",
+  //   brochure: "/brochures/Springs Brochure.pdf",
+  //   type: "Premium Lifestyle Apartments",
+  // },
+   {
+    name: "Regal",
+    location: "Royapettah",
     price: "₹2.8 Cr onwards",
-    image: "/project/Springs.jpg",
-    // brochure: "/brochures/springs.pdf",
+    image: "/project/Regal.jpg",
+    brochure: "/brochures/Regal Brochure.pdf",
     type: "Premium Lifestyle Apartments",
   },
   {
@@ -84,7 +92,7 @@ const projects = [
     location: "K.K. Nagar",
     price: "₹1.8 Cr onwards",
     image: "/project/Akshayam.jpg",
-    // brochure: "/brochures/akshayam.pdf",
+    brochure: "/brochures/Akshayam Brochure.pdf",
     type: "Smart Urban Homes",
   },
   {

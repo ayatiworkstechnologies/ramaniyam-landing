@@ -22,6 +22,7 @@ export default function ProjectCard({ project, priority = false }) {
           quality={80}
           className="object-cover group-hover:scale-105 transition duration-700"
         />
+
         {/* LOCATION BADGE */}
         <div className="absolute top-5 left-5 bg-white/80 backdrop-blur-md text-[var(--primary)] px-4 py-1.5 rounded-full flex items-center gap-2 text-sm font-medium shadow-sm">
           <MapPin className="w-4 h-4" />
@@ -36,28 +37,31 @@ export default function ProjectCard({ project, priority = false }) {
             </h3>
 
             <div className="flex gap-3">
-              {/* BROCHURE BUTTON */}
-              <button
-                onClick={() => setOpen(true)}
-                className="flex-1 flex items-center justify-center gap-2 
-                           border border-[var(--primary)] 
-                           text-[var(--primary)] 
-                           py-2.5 rounded-xl font-semibold 
-                           transition-all duration-300
-                           hover:bg-[var(--primary)] 
-                           hover:text-white
-                           hover:shadow-md"
-              >
-                <FileText className="w-4 h-4" />
-                Brochure
-              </button>
+              {/* BROCHURE BUTTON (only if brochure exists) */}
+              {project.brochure && (
+                <button
+                  onClick={() => setOpen(true)}
+                  className="flex-1 flex items-center justify-center gap-2 
+                             border border-[var(--primary)] 
+                             text-[var(--primary)] 
+                             py-2.5 rounded-xl font-semibold 
+                             transition-all duration-300
+                             hover:bg-[var(--primary)] 
+                             hover:text-white
+                             hover:shadow-md"
+                >
+                  <FileText className="w-4 h-4" />
+                  Brochure
+                </button>
+              )}
 
               {/* ENQUIRE BUTTON */}
               <Link
                 href="#lead"
-                className="flex-1 flex items-center justify-center gap-2 
-                           py-2.5 rounded-xl font-semibold text-white
-                           transition-all duration-300 hover:shadow-md"
+                className={`flex items-center justify-center gap-2 
+                            py-2.5 rounded-xl font-semibold text-white
+                            transition-all duration-300 hover:shadow-md
+                            ${project.brochure ? "flex-1" : "w-full"}`}
                 style={{ backgroundColor: "var(--primary)" }}
               >
                 <Phone className="w-4 h-4" />
@@ -68,8 +72,8 @@ export default function ProjectCard({ project, priority = false }) {
         </div>
       </div>
 
-      {/* MODAL */}
-      {open && (
+      {/* MODAL (only if brochure exists) */}
+      {open && project.brochure && (
         <BrochureModal project={project} onClose={() => setOpen(false)} />
       )}
     </>
