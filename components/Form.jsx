@@ -33,7 +33,7 @@ export default function LeadFormComponent() {
 
     try {
       const res = await fetch(
-        "https://campaign-ramaniyam.ayatiworks.com/api/lead.php",
+        "https://projects.ramaniyam.com/api/lead.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
