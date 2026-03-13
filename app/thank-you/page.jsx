@@ -1,6 +1,4 @@
 import ThankYouContent from "@/components/ThankYouContent";
-import Script from "next/script";
-
 import { Suspense } from "react";
 
 export const metadata = {
@@ -18,18 +16,6 @@ export default function ThankYouPage() {
         </div>
       }
     >
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=AW-17942239966"
-      />
-      <Script id="google-ads-conversion">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'AW-17942239966');
-        `}
-      </Script>
       <ThankYouContent />
     </Suspense>
   );

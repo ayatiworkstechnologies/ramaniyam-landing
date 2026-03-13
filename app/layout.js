@@ -1,8 +1,10 @@
 import dynamic from "next/dynamic";
 import { Catamaran } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 import "./globals.css";
 
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 const Footer = dynamic(() => import("@/components/Footer"));
 import Header from "@/components/Header";
 
@@ -22,27 +24,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={catamaran.variable}>
-      
-      {/* Google Ads */}
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=AW-17942239966"
-      />
-      <Script id="google-ads-init">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'AW-17942239966');
-        `}
-      </Script>
 
       {/* Google Analytics */}
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-X9BL4WSL2H"
       />
-      <Script id="google-analytics-init">
+
+      <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -52,28 +41,37 @@ export default function RootLayout({ children }) {
       </Script>
 
       {/* Google Tag Manager */}
-      <Script id="gtm" strategy="afterInteractive">
-        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T2CTB9FR');`}
+      <Script id="gtm-script" strategy="afterInteractive">
+        {`
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5SS3HJQV');
+        `}
       </Script>
 
       <body>
-        {/* GTM NoScript */}
+
+        {/* GTM Noscript */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-T2CTB9FR"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5SS3HJQV"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
 
+        {/* Tracks GA4 page_view on every AJAX/client-side route change */}
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
+
         <Header />
         {children}
         <Footer />
+
       </body>
     </html>
   );
