@@ -18,19 +18,16 @@ export default function Hero() {
         className="absolute inset-0 bg-gray-900"
       >
         <Image
-          src="/banner.jpg"
+          src="/banner-2.png"
           alt="Luxury Apartments"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-center"
         />
       </motion.div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
-
       {/* Content */}
-      <div className="relative container py-24 grid lg:grid-cols-2 gap-16 items-center text-white">
+      <div className="relative container py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center justify-center text-white">
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -44,8 +41,8 @@ export default function Hero() {
           <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight mb-6">
             Find Your Perfect Home with{" "}
             <span
-              className="font-extrabold"
-              style={{ color: "var(--primary)" }}
+              className="font-extrabold text-white px-3 rounded-md inline-block leading-tight"
+              style={{ backgroundColor: "var(--primary)" }}
             >
               Ramaniyam
             </span>
@@ -66,7 +63,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.2 }}
-                  className="bg-white/10 backdrop-blur-xl text-red-800 border border-white/10 px-5 py-4 rounded-xl text-sm font-medium"
+                  className="bg-white/10 backdrop-blur-xl text-white border border-white/10 px-5 py-4 rounded-xl text-sm font-medium"
                 >
                   ✓ {item}
                 </motion.div>
