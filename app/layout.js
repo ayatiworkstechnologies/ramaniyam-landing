@@ -16,9 +16,9 @@ const catamaran = Catamaran({
 });
 
 export const metadata = {
-  title: "Premium 2, 3 & 4 BHK Flats for Sale in Chennai | Ramaniyam Projects",
+  title: "Premium 1, 2, 3 & 4 BHK Flats for Sale in Chennai | Ramaniyam Projects",
   description:
-    "Looking for 2, 3 & 4 BHK apartments for sale in Chennai? Explore Ramaniyam's premium flats across prime locations including Anna Nagar & Adyar. Book a site visit today.",
+    "Looking for 1, 2, 3 & 4 BHK apartments for sale in Chennai? Explore Ramaniyam's premium flats across prime locations including Anna Nagar & Adyar. Book a site visit today.",
 };
 
 export default function RootLayout({ children }) {

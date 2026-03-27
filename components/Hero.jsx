@@ -10,35 +10,41 @@ export default function Hero() {
       id="home"
       className="relative overflow-hidden min-h-screen flex items-center"
     >
-      {/* Background Image */}
-      <motion.div
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 6 }}
-        className="absolute inset-0 bg-gray-900"
-      >
-        <Image
-          src="/banner-2.png"
-          alt="Luxury Apartments"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-      </motion.div>
+      {/* Background Image & Overlay */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 6 }}
+          className="absolute inset-0 bg-gray-900"
+        >
+          <Image
+            src="/banner-3.jpg"
+            alt="Luxury Apartments"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </motion.div>
+        {/* Dark overlay for better text contrast */}
+        <div className="absolute inset-0 z-[1]" />
+        {/* White shade on the left side */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 bg-gradient-to-r from-black/80 to-transparent z-[2]" />
+      </div>
 
       {/* Content */}
-      <div className="relative container py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center justify-center text-white">
+      <div className="relative z-10 container  py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center justify-center text-white">
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-block mb-6 text-xs tracking-[0.25em] uppercase font-semibold bg-white/10 px-4 py-2 rounded-full backdrop-blur">
+          <span className="inline-block mb-6 text-xs tracking-[0.25em] uppercase font-semibold bg-[var(--primary)] px-4 py-2 rounded-full backdrop-blur">
             Trusted Since 1986
           </span>
 
-          <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight mb-6 drop-shadow-lg">
             Find Your Perfect Home with{" "}
             <span
               className="font-extrabold text-white px-3 rounded-md inline-block leading-tight"
@@ -48,7 +54,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <div className="text-lg md:text-xl text-white/80 mb-12 max-w-xl">
+          <div className="text-lg md:text-xl leading-7 text-white mb-12 max-w-xl drop-shadow-md">
             Discover premium residential projects across Chennai’s most
             sought-after locations. RERA approved. Designed with integrity and
             timeless architecture.
@@ -56,14 +62,14 @@ export default function Hero() {
 
           {/* FEATURE HIGHLIGHTS */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {["35+ Years Legacy", "Ready & Upcoming", "2, 3 & 4 BHK"].map(
+            {["40+ Years Legacy", "Ready & Upcoming", "1, 2, 3 & 4 BHK"].map(
               (item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.2 }}
-                  className="bg-white/10 backdrop-blur-xl text-white border border-white/10 px-5 py-4 rounded-xl text-sm font-medium"
+                  className="bg-[var(--primary)] backdrop-blur-xl text-white border border-white/10 px-5 py-4 rounded-xl text-sm font-medium"
                 >
                   ✓ {item}
                 </motion.div>

@@ -23,15 +23,7 @@ const projects = [
     brochure: "/brochures/Prema Saraswathi Brochure.pdf",
     type: "Luxury Urban Living",
   },
-  // {
-  //   name: "Springs",
-  //   location: "Adyar",
-  //   price: "₹2.8 Cr onwards",
-  //   image: "/project/Springs.jpg",
-  //   brochure: "/brochures/Springs Brochure.pdf",
-  //   type: "Premium Lifestyle Apartments",
-  // },
-   {
+  {
     name: "Regal",
     location: "Royapettah",
     price: "₹2.8 Cr onwards",
@@ -39,14 +31,6 @@ const projects = [
     brochure: "/brochures/Regal Brochure.pdf",
     type: "Premium Lifestyle Apartments",
   },
-  // {
-  //   name: "Sridevi",
-  //   location: "Mandavelipakkam",
-  //   price: "₹4.2 Cr onwards",
-  //   image: "/project/Sridevi.jpg",
-  //   brochure: "/brochures/Sridevi Brochure New.pdf",
-  //   type: "Ultra Luxury Homes",
-  // },
   {
     name: "Ponkamal Enclave",
     location: "T. Nagar",
@@ -55,22 +39,6 @@ const projects = [
     brochure: "/brochures/PonKamal Enclave Brochure.pdf",
     type: "Ready-to-Move Apartments",
   },
-  // {
-  //   name: "Radika",
-  //   location: "Kilpauk",
-  //   price: "₹3.3 Cr onwards",
-  //   image: "/project/Radika.jpg",
-  //   brochure: "/brochures/Radika Brochure.pdf",
-  //   type: "Boutique Residential Project",
-  // },
-  // {
-  //   name: "Bhagirati",
-  //   location: "Mylapore",
-  //   price: "₹3.1 Cr onwards",
-  //   image: "/project/Bhagirati.jpg",
-  //   brochure: "/brochures/Bhagirati Brochure.pdf",
-  //   type: "Classic City Living",
-  // },
   {
     name: "Sri Ramakrishna",
     location: "Nanganallur",
@@ -79,38 +47,14 @@ const projects = [
     brochure: "/brochures/Sri Ramakrishna Brochure.pdf",
     type: "Vaastu-Compliant Homes",
   },
-  // {
-  //   name: "Balaji",
-  //   location: "Ashok Nagar",
-  //   price: "Price on Request",
-  //   image: "/project/Balaji.jpg",
-  //   // brochure: "/brochures/balaji.pdf",
-  //   type: "Modern Residential Living",
-  // },
-  // {
-  //   name: "Akshayam",
-  //   location: "K.K. Nagar",
-  //   price: "₹1.8 Cr onwards",
-  //   image: "/project/Akshayam.jpg",
-  //   brochure: "/brochures/Akshayam Brochure.pdf",
-  //   type: "Smart Urban Homes",
-  // },
-  // {
-  //   name: "Gayatri",
-  //   location: "Thiruvanmiyur",
-  //   price: "₹2.4 Cr onwards",
-  //   image: "/project/Gayatri.jpg",
-  //   brochure: "/brochures/Gayatri Brochure.pdf",
-  //   type: "Premium Residences",
-  // },
-  // {
-  //   name: "Rangavilasam",
-  //   location: "Nanganallur",
-  //   price: "₹1.8 Cr onwards",
-  //   image: "/project/Rangavilasam.jpg",
-  //   brochure: "/brochures/Rangavilasam Brochure.pdf",
-  //   type: "Boutique Premium Project",
-  // },
+  {
+    name: "Springs",
+    location: "Adyar",
+    price: "₹2.8 Cr onwards",
+    image: "/project/Springs.jpg",
+    brochure: "/brochures/Springs Brochure.pdf",
+    type: "Premium Lifestyle Apartments",
+  },
 ];
 
 export default projects;

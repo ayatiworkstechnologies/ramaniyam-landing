@@ -4,7 +4,7 @@ export default function TrustStrip() {
   const items = [
     {
       icon: Home,
-      title: "35+ Years",
+      title: "40+ Years",
       desc: "Trusted Experience",
     },
     {
@@ -51,14 +51,10 @@ export default function TrustStrip() {
               </div>
 
               {/* Title */}
-              <h4 className="text-lg font-bold mb-1">
-                {item.title}
-              </h4>
+              <h4 className="text-lg font-bold mb-1">{item.title}</h4>
 
               {/* Description */}
-              <p className="text-sm text-gray-600 font-medium">
-                {item.desc}
-              </p>
+              <p className="text-sm text-gray-600 font-medium">{item.desc}</p>
             </div>
           );
         })}

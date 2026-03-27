@@ -76,12 +76,12 @@ export default function LeadFormComponent() {
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 w-full max-w-lg mx-auto transition-all duration-300">
-      <h3 className="text-2xl font-bold text-center mb-8">
+    <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 w-full max-w-md mx-auto transition-all duration-300">
+      <h3 className="text-xl font-bold text-center mb-6">
         Request a Call Back
       </h3>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* NAME */}
         <div>
           <div className="relative">

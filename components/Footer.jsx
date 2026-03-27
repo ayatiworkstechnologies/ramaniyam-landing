@@ -24,7 +24,7 @@ export default function Footer() {
 
           <div className="text-sm text-white/80 leading-relaxed mb-6">
             A trusted name in premium residential developments across Chennai
-            for over three decades. Built with quality, integrity and timeless
+            for over four decades. Built with quality, integrity and timeless
             design.
           </div>
 
