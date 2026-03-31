@@ -47,14 +47,14 @@ const projects = [
     brochure: "/brochures/Sri Ramakrishna Brochure.pdf",
     type: "Vaastu-Compliant Homes",
   },
-  {
-    name: "Springs",
-    location: "Adyar",
-    price: "₹2.8 Cr onwards",
-    image: "/project/Springs.jpg",
-    brochure: "/brochures/Springs Brochure.pdf",
-    type: "Premium Lifestyle Apartments",
-  },
+  // {
+  //   name: "Springs",
+  //   location: "Adyar",
+  //   price: "₹2.8 Cr onwards",
+  //   image: "/project/Springs.jpg",
+  //   brochure: "/brochures/Springs Brochure.pdf",
+  //   type: "Premium Lifestyle Apartments",
+  // },
 ];
 
 export default projects;
